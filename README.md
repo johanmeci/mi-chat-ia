@@ -2,8 +2,9 @@
 
 Chat con IA para gestión de consultas de una clínica médica. Responde preguntas sobre horarios, especialidades y agendamiento de citas.
 
-## Demo
-[Ver demo en vivo](https://mi-chat-ia-five.vercel.app/)
+**Live Preview:** [https://mi-chat-ia-five.vercel.app/](https://mi-chat-ia-five.vercel.app/)
+
+[![Project Preview](https://johanmeneses.dev/assets/projects/chat-ai_project.png)](https://mi-chat-ia-five.vercel.app/)
 
 ## Funcionalidades
 - Respuestas en tiempo real con streaming
