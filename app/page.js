@@ -2,7 +2,7 @@
 import { useChat } from '@ai-sdk/react';
 import { useState, useEffect } from 'react';
 
-function Message({ content, role }) {
+function Message({ content, role, onSugerencia }) {
   if (role === 'user') {
     return (
       <div style={{ textAlign: 'right', marginBottom: '12px' }}>
@@ -67,9 +67,18 @@ function Message({ content, role }) {
           {datos.mensaje}
         </div>
         {datos.seguimiento && (
-          <div style={{ fontSize: '12px', opacity: 0.7, fontStyle: 'italic' }}>
+          <button
+            onClick={() => onSugerencia({ role: 'user', content: datos.seguimiento })}
+            style={{
+              fontSize: '12px', padding: '5px 12px',
+              borderRadius: '20px', border: '1px solid currentColor',
+              background: 'transparent', cursor: 'pointer',
+              color: estilo.color, opacity: 0.8,
+              marginTop: '4px'
+            }}
+          >
             {datos.seguimiento}
-          </div>
+          </button>
         )}
       </div>
     </div>
@@ -77,7 +86,7 @@ function Message({ content, role }) {
 }
 
 export default function Page() {
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat();
+  const { messages, input, handleInputChange, handleSubmit, isLoading, append } = useChat();
 
   return (
     <div style={{ maxWidth: '600px', margin: '40px auto', padding: '0 20px' }}>
@@ -104,7 +113,7 @@ export default function Page() {
             );
           }
 
-          return <Message key={m.id} content={m.content} role={m.role} />;
+          return <Message key={m.id} content={m.content} role={m.role} onSugerencia={append} />;
         })}
       </div>
 
